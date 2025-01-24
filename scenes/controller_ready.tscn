@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://0gdthd31xpjy"]
+
+[ext_resource type="Script" path="res://scripts/controller_ready/controller_ready.gd" id="1_1ey11"]
+[ext_resource type="Script" path="res://scripts/controller_ready/player.gd" id="1_cbyd3"]
+[ext_resource type="Texture2D" uid="uid://t8wsxknippsh" path="res://assets/sprites/icon/console-controller.svg" id="1_y0vw4"]
+
+[node name="ControllerReady" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ey11")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player1" type="PanelContainer" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(576, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+script = ExtResource("1_cbyd3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Player1"]
+layout_mode = 2
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Player1/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Player1/VBoxContainer/CenterContainer"]
+self_modulate = Color(0.128, 0.3408, 0.8, 1)
+layout_mode = 2
+texture = ExtResource("1_y0vw4")
+
+[node name="Label" type="Label" parent="HBoxContainer/Player1/VBoxContainer"]
+self_modulate = Color(0.129412, 0.341176, 0.8, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "PRESS A TO JOIN"
+
+[node name="Player2" type="PanelContainer" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(576, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+script = ExtResource("1_cbyd3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Player2"]
+layout_mode = 2
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Player2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Player2/VBoxContainer/CenterContainer"]
+self_modulate = Color(0.8, 0.128, 0.128, 1)
+layout_mode = 2
+texture = ExtResource("1_y0vw4")
+
+[node name="Label" type="Label" parent="HBoxContainer/Player2/VBoxContainer"]
+self_modulate = Color(0.8, 0.129412, 0.129412, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "PRESS A TO JOIN"

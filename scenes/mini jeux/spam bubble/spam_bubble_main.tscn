@@ -13,7 +13,7 @@ scale = Vector2(2.23, 2.23)
 texture = ExtResource("1_r8w3y")
 
 [node name="SpamBubble" parent="." instance=ExtResource("1_1ox4c")]
-position = Vector2(372, 347)
+position = Vector2(324, 335)
 
 [node name="SpamBubble2" parent="." instance=ExtResource("1_1ox4c")]
 position = Vector2(796, 333)

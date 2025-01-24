@@ -18,10 +18,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var vec = Vector2(valScale,valScale)
-	if Input.is_action_just_pressed("ui_up") && playerId == PlayerID.Player1:		
+	if Input.is_action_just_pressed("spam_bubble") && playerId == PlayerID.Player1:		
 		spam_bubble.scale = vec
 		valScale += 0.5 
-	if Input.is_action_just_pressed("ui_down") && playerId == PlayerID.Player2:
+	if Input.is_action_just_pressed("spam_bubble") && playerId == PlayerID.Player2:
 		spam_bubble.scale = vec
 		valScale += 0.5 
 	
