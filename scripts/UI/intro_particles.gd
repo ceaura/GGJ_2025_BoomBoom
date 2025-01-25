@@ -5,7 +5,6 @@ extends Node
 @onready var cpu_particles_2d_5 = $CPUParticles2D5
 @onready var cpu_particles_2d_6 = $CPUParticles2D6
 
-
 func _ready():
 	for child in get_children():
 		if child is CPUParticles2D:

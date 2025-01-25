@@ -1,22 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://xc0lboc3pjc5"]
+[gd_scene load_steps=12 format=3 uid="uid://xc0lboc3pjc5"]
 
 [ext_resource type="Texture2D" uid="uid://bwcc36tjt5f78" path="res://assets/sprites/free-winter-backgrounds-pixel-art/winter 6/hd.png" id="1_aephf"]
-[ext_resource type="Texture2D" uid="uid://dmvk2l5lvo2j2" path="res://assets/sprites/Bubble Drink 32x32/Bubble Avocado.png" id="2_2ycel"]
 [ext_resource type="Script" path="res://scripts/Mini jeux/qte bubble/game_manager_qte-bubble.gd" id="5_7pgiu"]
 [ext_resource type="Script" path="res://scripts/UI/intro_particles.gd" id="5_d7vyd"]
+[ext_resource type="Texture2D" uid="uid://bvr2rx4cvenlx" path="res://assets/sprites/icon/bubble/redBubble.png" id="5_wlis2"]
+[ext_resource type="Texture2D" uid="uid://clcwb81jvrqhb" path="res://assets/sprites/icon/bubble/blueBubble.png" id="6_6ub7n"]
 [ext_resource type="Script" path="res://scripts/Mini jeux/qte bubble/skill_bar.gd" id="6_87ckw"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xdpft"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_137n6"]
-atlas = ExtResource("2_2ycel")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncbqh"]
+atlas = ExtResource("6_6ub7n")
+region = Rect2(0, 0, 160, 160)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e6bhf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_137n6")
+"texture": SubResource("AtlasTexture_ncbqh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5pny"]
+atlas = ExtResource("5_wlis2")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4k2yc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5pny")
 }],
 "loop": true,
 "name": &"default",
@@ -106,56 +122,46 @@ position = Vector2(920, 139)
 [node name="Player1Bubbles" type="Node" parent="."]
 
 [node name="QteBubble" type="AnimatedSprite2D" parent="Player1Bubbles"]
-position = Vector2(357, 423)
-scale = Vector2(3, 3)
+position = Vector2(392, 440)
 sprite_frames = SubResource("SpriteFrames_e6bhf")
 
 [node name="QteBubble2" type="AnimatedSprite2D" parent="Player1Bubbles"]
-position = Vector2(256, 426)
-scale = Vector2(3, 3)
+position = Vector2(221, 450)
 sprite_frames = SubResource("SpriteFrames_e6bhf")
 
 [node name="QteBubble3" type="AnimatedSprite2D" parent="Player1Bubbles"]
-position = Vector2(393, 347)
-scale = Vector2(3, 3)
+position = Vector2(460, 294)
 sprite_frames = SubResource("SpriteFrames_e6bhf")
 
 [node name="QteBubble4" type="AnimatedSprite2D" parent="Player1Bubbles"]
-position = Vector2(305, 349)
-scale = Vector2(3, 3)
+position = Vector2(301, 293)
 sprite_frames = SubResource("SpriteFrames_e6bhf")
 
 [node name="QteBubble5" type="AnimatedSprite2D" parent="Player1Bubbles"]
-position = Vector2(207, 347)
-scale = Vector2(3, 3)
+position = Vector2(140, 295)
 sprite_frames = SubResource("SpriteFrames_e6bhf")
 
 [node name="Player2Bubbles" type="Node" parent="."]
 
 [node name="QteBubble7" type="AnimatedSprite2D" parent="Player2Bubbles"]
-position = Vector2(819, 430)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_e6bhf")
+position = Vector2(924, 446)
+sprite_frames = SubResource("SpriteFrames_4k2yc")
 
 [node name="QteBubble8" type="AnimatedSprite2D" parent="Player2Bubbles"]
-position = Vector2(956, 351)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_e6bhf")
+position = Vector2(753, 457)
+sprite_frames = SubResource("SpriteFrames_4k2yc")
 
 [node name="QteBubble9" type="AnimatedSprite2D" parent="Player2Bubbles"]
-position = Vector2(868, 353)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_e6bhf")
+position = Vector2(992, 301)
+sprite_frames = SubResource("SpriteFrames_4k2yc")
 
 [node name="QteBubble10" type="AnimatedSprite2D" parent="Player2Bubbles"]
-position = Vector2(770, 351)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_e6bhf")
+position = Vector2(833, 300)
+sprite_frames = SubResource("SpriteFrames_4k2yc")
 
-[node name="QteBubble6" type="AnimatedSprite2D" parent="Player2Bubbles"]
-position = Vector2(920, 427)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_e6bhf")
+[node name="QteBubble11" type="AnimatedSprite2D" parent="Player2Bubbles"]
+position = Vector2(672, 302)
+sprite_frames = SubResource("SpriteFrames_4k2yc")
 
 [node name="IntroParticles" type="Node" parent="."]
 script = ExtResource("5_d7vyd")
@@ -163,59 +169,49 @@ script = ExtResource("5_d7vyd")
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="IntroParticles"]
 position = Vector2(167, -112)
 emitting = false
-amount = 5
+amount = 10
 lifetime = 2.0
 one_shot = true
-texture = ExtResource("2_2ycel")
+texture = ExtResource("6_6ub7n")
 emission_shape = 1
 emission_sphere_radius = 128.0
-scale_amount_min = 10.0
-scale_amount_max = 10.0
 
 [node name="CPUParticles2D3" type="CPUParticles2D" parent="IntroParticles"]
 position = Vector2(418, -109)
 emitting = false
-amount = 5
+amount = 10
 lifetime = 2.0
 one_shot = true
-texture = ExtResource("2_2ycel")
+texture = ExtResource("5_wlis2")
 emission_shape = 1
 emission_sphere_radius = 128.0
-scale_amount_min = 10.0
-scale_amount_max = 10.0
 
 [node name="CPUParticles2D4" type="CPUParticles2D" parent="IntroParticles"]
 position = Vector2(629, -105)
 emitting = false
-amount = 5
+amount = 10
 lifetime = 2.0
 one_shot = true
-texture = ExtResource("2_2ycel")
+texture = ExtResource("6_6ub7n")
 emission_shape = 1
 emission_sphere_radius = 128.0
-scale_amount_min = 10.0
-scale_amount_max = 10.0
 
 [node name="CPUParticles2D5" type="CPUParticles2D" parent="IntroParticles"]
 position = Vector2(847, -105)
 emitting = false
-amount = 5
+amount = 10
 lifetime = 2.0
 one_shot = true
-texture = ExtResource("2_2ycel")
+texture = ExtResource("6_6ub7n")
 emission_shape = 1
 emission_sphere_radius = 128.0
-scale_amount_min = 10.0
-scale_amount_max = 10.0
 
 [node name="CPUParticles2D6" type="CPUParticles2D" parent="IntroParticles"]
 position = Vector2(1074, -105)
 emitting = false
-amount = 5
+amount = 10
 lifetime = 2.0
 one_shot = true
-texture = ExtResource("2_2ycel")
+texture = ExtResource("5_wlis2")
 emission_shape = 1
 emission_sphere_radius = 128.0
-scale_amount_min = 10.0
-scale_amount_max = 10.0
