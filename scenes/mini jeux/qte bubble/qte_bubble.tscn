@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://u6pg58rymdjy"]
+
+[ext_resource type="Texture2D" uid="uid://br6c11iesyim5" path="res://assets/sprites/Bubble Drink 32x32/Bubble Bubble Gum.png" id="1_bv8cr"]
+[ext_resource type="Script" path="res://scripts/Mini jeux/qte bubble/qte_bubble.gd" id="2_30jqi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dcfet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bv8cr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="QteBubble" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dcfet")
+animation = &"idle"
+script = ExtResource("2_30jqi")

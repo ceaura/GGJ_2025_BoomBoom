@@ -1,9 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtke8vjvnfbwa"]
+[gd_scene load_steps=10 format=3 uid="uid://dtke8vjvnfbwa"]
 
-[ext_resource type="PackedScene" uid="uid://cd101ff0qm1db" path="res://scenes/mini jeux/spam bubble/spam_bubble.tscn" id="1_1ox4c"]
 [ext_resource type="Texture2D" uid="uid://dn4bgkl4e6mh2" path="res://assets/sprites/free-winter-backgrounds-pixel-art/winter 5/11.png" id="1_r8w3y"]
 [ext_resource type="Script" path="res://scripts/Mini jeux/spam bubble/spam_bubble_game_manager.gd" id="3_dyrfd"]
 [ext_resource type="PackedScene" uid="uid://ca25550kxb748" path="res://scenes/UI/chrono.tscn" id="4_ssv7r"]
+[ext_resource type="Texture2D" uid="uid://dihuhvxoqxt5e" path="res://assets/sprites/Bubble Drink 32x32/Bubble Red Velvet.png" id="5_lol83"]
+[ext_resource type="Texture2D" uid="uid://br6c11iesyim5" path="res://assets/sprites/Bubble Drink 32x32/Bubble Bubble Gum.png" id="6_irwx8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2nr3"]
+atlas = ExtResource("5_lol83")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7jhi1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2nr3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm7yd"]
+atlas = ExtResource("6_irwx8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e782d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wm7yd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="SpamBubbleMain" type="Node2D"]
 
@@ -12,22 +43,18 @@ position = Vector2(545, 311)
 scale = Vector2(2.23, 2.23)
 texture = ExtResource("1_r8w3y")
 
-[node name="SpamBubble" parent="." instance=ExtResource("1_1ox4c")]
-position = Vector2(324, 335)
-
-[node name="SpamBubble2" parent="." instance=ExtResource("1_1ox4c")]
-position = Vector2(796, 333)
-playerId = 1
-
-[node name="gameTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
-autostart = true
-
 [node name="==GAME MANAGER==" type="Node" parent="."]
 script = ExtResource("3_dyrfd")
 
 [node name="Chrono" parent="." instance=ExtResource("4_ssv7r")]
 amount_time = 5
 
-[connection signal="timeout" from="gameTimer" to="==GAME MANAGER==" method="_on_game_timer_timeout"]
+[node name="SpamBubble" type="AnimatedSprite2D" parent="."]
+position = Vector2(636, 607)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7jhi1")
+
+[node name="SpamBubble2" type="AnimatedSprite2D" parent="."]
+position = Vector2(372, 607)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_e782d")

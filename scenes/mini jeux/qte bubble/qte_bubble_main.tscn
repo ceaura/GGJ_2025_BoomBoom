@@ -1,0 +1,221 @@
+[gd_scene load_steps=9 format=3 uid="uid://xc0lboc3pjc5"]
+
+[ext_resource type="Texture2D" uid="uid://bwcc36tjt5f78" path="res://assets/sprites/free-winter-backgrounds-pixel-art/winter 6/hd.png" id="1_aephf"]
+[ext_resource type="Texture2D" uid="uid://dmvk2l5lvo2j2" path="res://assets/sprites/Bubble Drink 32x32/Bubble Avocado.png" id="2_2ycel"]
+[ext_resource type="Script" path="res://scripts/Mini jeux/qte bubble/game_manager_qte-bubble.gd" id="5_7pgiu"]
+[ext_resource type="Script" path="res://scripts/UI/intro_particles.gd" id="5_d7vyd"]
+[ext_resource type="Script" path="res://scripts/Mini jeux/qte bubble/skill_bar.gd" id="6_87ckw"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xdpft"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_137n6"]
+atlas = ExtResource("2_2ycel")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e6bhf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_137n6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="QteBubbleMain" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(592, 344)
+scale = Vector2(0.417014, 0.443827)
+texture = ExtResource("1_aephf")
+
+[node name="== GAME MANAGER ==" type="Node" parent="."]
+script = ExtResource("5_7pgiu")
+
+[node name="Skill bar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1157.0
+offset_bottom = 650.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Skill bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_87ckw")
+
+[node name="Barre" type="TextureRect" parent="Skill bar/Panel"]
+self_modulate = Color(0.716218, 0.104063, 0.387134, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 273.0
+offset_top = -239.0
+offset_right = -237.0
+offset_bottom = -186.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_xdpft")
+
+[node name="Zone cible" type="TextureRect" parent="Skill bar/Panel"]
+self_modulate = Color(0.89636, 0.613388, 0.965765, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 294.0
+offset_top = -239.0
+offset_right = -815.0
+offset_bottom = -186.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_xdpft")
+
+[node name="Curseur" type="TextureRect" parent="Skill bar/Panel"]
+self_modulate = Color(0.216723, 0.39575, 0.700259, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 551.0
+offset_top = -239.0
+offset_right = -599.0
+offset_bottom = -186.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_xdpft")
+
+[node name="LeftMarkerBarre" type="Marker2D" parent="Skill bar/Panel"]
+position = Vector2(273, 139)
+
+[node name="RightMarkerBarre" type="Marker2D" parent="Skill bar/Panel"]
+position = Vector2(920, 139)
+
+[node name="Player1Bubbles" type="Node" parent="."]
+
+[node name="QteBubble" type="AnimatedSprite2D" parent="Player1Bubbles"]
+position = Vector2(357, 423)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_e6bhf")
+
+[node name="QteBubble2" type="AnimatedSprite2D" parent="Player1Bubbles"]
+position = Vector2(256, 426)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_e6bhf")
+
+[node name="QteBubble3" type="AnimatedSprite2D" parent="Player1Bubbles"]
+position = Vector2(393, 347)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_e6bhf")
+
+[node name="QteBubble4" type="AnimatedSprite2D" parent="Player1Bubbles"]
+position = Vector2(305, 349)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_e6bhf")
+
+[node name="QteBubble5" type="AnimatedSprite2D" parent="Player1Bubbles"]
+position = Vector2(207, 347)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_e6bhf")
+
+[node name="Player2Bubbles" type="Node" parent="."]
+
+[node name="QteBubble7" type="AnimatedSprite2D" parent="Player2Bubbles"]
+position = Vector2(819, 430)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_e6bhf")
+
+[node name="QteBubble8" type="AnimatedSprite2D" parent="Player2Bubbles"]
+position = Vector2(956, 351)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_e6bhf")
+
+[node name="QteBubble9" type="AnimatedSprite2D" parent="Player2Bubbles"]
+position = Vector2(868, 353)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_e6bhf")
+
+[node name="QteBubble10" type="AnimatedSprite2D" parent="Player2Bubbles"]
+position = Vector2(770, 351)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_e6bhf")
+
+[node name="QteBubble6" type="AnimatedSprite2D" parent="Player2Bubbles"]
+position = Vector2(920, 427)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_e6bhf")
+
+[node name="IntroParticles" type="Node" parent="."]
+script = ExtResource("5_d7vyd")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(167, -112)
+emitting = false
+amount = 5
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("2_2ycel")
+emission_shape = 1
+emission_sphere_radius = 128.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(418, -109)
+emitting = false
+amount = 5
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("2_2ycel")
+emission_shape = 1
+emission_sphere_radius = 128.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(629, -105)
+emitting = false
+amount = 5
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("2_2ycel")
+emission_shape = 1
+emission_sphere_radius = 128.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(847, -105)
+emitting = false
+amount = 5
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("2_2ycel")
+emission_shape = 1
+emission_sphere_radius = 128.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+
+[node name="CPUParticles2D6" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(1074, -105)
+emitting = false
+amount = 5
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("2_2ycel")
+emission_shape = 1
+emission_sphere_radius = 128.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
