@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dtke8vjvnfbwa"]
+[gd_scene load_steps=19 format=3 uid="uid://dtke8vjvnfbwa"]
 
 [ext_resource type="Texture2D" uid="uid://dn4bgkl4e6mh2" path="res://assets/sprites/free-winter-backgrounds-pixel-art/winter 5/11.png" id="1_r8w3y"]
 [ext_resource type="Script" path="res://scripts/Mini jeux/spam bubble/spam_bubble_game_manager.gd" id="3_dyrfd"]
@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://cborceypgfal8" path="res://assets/audio/notification-beep-229154.mp3" id="9_ejbde"]
 [ext_resource type="AudioStream" uid="uid://dft27s35mwk6k" path="res://assets/audio/race-start-beeps-125125-[AudioTrimmer.com].mp3" id="10_f1a48"]
 [ext_resource type="FontFile" uid="uid://bgu1kkmm26ttu" path="res://assets/fonts/monogram.ttf" id="11_6qs40"]
+[ext_resource type="PackedScene" uid="uid://t2yfadqnjhku" path="res://scripts/UI/icon.tscn" id="12_dcxxk"]
+[ext_resource type="PackedScene" uid="uid://7u1mxu0ut8o" path="res://scripts/UI/iconCat.tscn" id="13_n7xmt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_feg32"]
 atlas = ExtResource("7_iy08p")
@@ -55,11 +57,11 @@ texture = ExtResource("1_r8w3y")
 script = ExtResource("3_dyrfd")
 
 [node name="SpamBubble2" type="AnimatedSprite2D" parent="."]
-position = Vector2(754, 356)
+position = Vector2(852, 356)
 sprite_frames = SubResource("SpriteFrames_7jhi1")
 
 [node name="SpamBubble1" type="AnimatedSprite2D" parent="."]
-position = Vector2(348, 363)
+position = Vector2(239, 363)
 sprite_frames = SubResource("SpriteFrames_e782d")
 
 [node name="IntroParticles" type="Node" parent="."]
@@ -255,6 +257,23 @@ text = "PLAYER 1 WIN"
 
 [node name="TimerNextLevel" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="Icon" parent="." instance=ExtResource("12_dcxxk")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 584.0
+offset_top = 287.0
+offset_right = 586.0
+offset_bottom = 287.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Icon2" parent="." instance=ExtResource("13_n7xmt")]
+offset_left = 1634.0
+offset_top = 283.0
+offset_right = 1634.0
+offset_bottom = 283.0
 
 [connection signal="finished" from="IntroParticles/CPUParticles2D2" to="==GAME MANAGER==" method="_on_cpu_particles_2d_2_finished"]
 [connection signal="timeout" from="Control/Timer" to="Control" method="_on_timer_timeout"]

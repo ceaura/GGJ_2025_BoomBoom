@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://xc0lboc3pjc5"]
+[gd_scene load_steps=21 format=3 uid="uid://xc0lboc3pjc5"]
 
 [ext_resource type="Texture2D" uid="uid://bwcc36tjt5f78" path="res://assets/sprites/free-winter-backgrounds-pixel-art/winter 6/hd.png" id="1_aephf"]
 [ext_resource type="Texture2D" uid="uid://bhh6r2tbv4fam" path="res://assets/sprites/icon/bubble/barQteBubble.png" id="4_it5a8"]
@@ -8,12 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://1qh2kj0p5lpb" path="res://assets/sprites/icon/bubble/arrowQteBubble.png" id="5_tnh5u"]
 [ext_resource type="Texture2D" uid="uid://bvr2rx4cvenlx" path="res://assets/sprites/icon/bubble/redBubble.png" id="5_wlis2"]
 [ext_resource type="Texture2D" uid="uid://clcwb81jvrqhb" path="res://assets/sprites/icon/bubble/blueBubble.png" id="6_6ub7n"]
-[ext_resource type="Script" path="res://scripts/Mini jeux/qte bubble/skill_bar.gd" id="6_87ckw"]
 [ext_resource type="FontFile" uid="uid://bgu1kkmm26ttu" path="res://assets/fonts/monogram.ttf" id="7_q1gu4"]
 [ext_resource type="Script" path="res://scripts/UI/startChrono.gd" id="11_6x8rt"]
 [ext_resource type="Texture2D" uid="uid://ba61n1nesptc0" path="res://assets/sprites/icon/bubble/redStartWhiteBlack.png" id="12_to45u"]
 [ext_resource type="AudioStream" uid="uid://cborceypgfal8" path="res://assets/audio/notification-beep-229154.mp3" id="13_seaop"]
 [ext_resource type="AudioStream" uid="uid://dft27s35mwk6k" path="res://assets/audio/race-start-beeps-125125-[AudioTrimmer.com].mp3" id="14_q0vy5"]
+[ext_resource type="PackedScene" uid="uid://7u1mxu0ut8o" path="res://scripts/UI/iconCat.tscn" id="15_7wb27"]
+[ext_resource type="PackedScene" uid="uid://t2yfadqnjhku" path="res://scripts/UI/icon.tscn" id="16_vb0xq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncbqh"]
 atlas = ExtResource("6_6ub7n")
@@ -58,6 +59,7 @@ texture = ExtResource("1_aephf")
 script = ExtResource("5_7pgiu")
 
 [node name="Controls" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,7 +76,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("6_87ckw")
 
 [node name="Barre" type="TextureRect" parent="Controls/Panel"]
 layout_mode = 1
@@ -376,6 +377,26 @@ text = "PLAYER 1 WIN"
 [node name="TimerNextLevel" type="Timer" parent="."]
 wait_time = 3.0
 
+[node name="Icon" parent="." instance=ExtResource("16_vb0xq")]
+offset_left = 592.0
+offset_top = 282.0
+offset_right = 592.0
+offset_bottom = 282.0
+
+[node name="Icon2" parent="." instance=ExtResource("15_7wb27")]
+offset_left = 1621.0
+offset_top = 282.0
+offset_right = 1621.0
+offset_bottom = 282.0
+
+[node name="TimerCooldownPlayer1" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerCooldownPlayer2" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="finished" from="IntroParticles/CPUParticles2D2" to="== GAME MANAGER ==" method="_on_cpu_particles_2d_2_finished"]
 [connection signal="timeout" from="StartGame/Timer" to="StartGame" method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerNextLevel" to="== GAME MANAGER ==" method="_on_timer_next_level_timeout"]
+[connection signal="timeout" from="TimerCooldownPlayer1" to="== GAME MANAGER ==" method="_on_timer_cooldown_player_1_timeout"]
+[connection signal="timeout" from="TimerCooldownPlayer2" to="== GAME MANAGER ==" method="_on_timer_cooldown_player_2_timeout"]

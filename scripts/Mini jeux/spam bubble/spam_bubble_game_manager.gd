@@ -1,5 +1,4 @@
 extends Node
-@onready var __game_manager__ = $"."
 @onready var chrono = $"../Chrono"
 @onready var spam_bubble = $"../SpamBubble1"
 @onready var spam_bubble_2 = $"../SpamBubble2"
@@ -15,40 +14,48 @@ var add_scale_player_2 = 0.05
 @onready var audio_stream_player_2d_2 = $"../AudioStreamPlayer2D2"
 @onready var win_label = $"../WinLabel"
 @onready var timer_next_level = $"../TimerNextLevel"
+@onready var icon_dog = $"../Icon"
+@onready var icon_cat = $"../Icon2"
 
-
-
-signal endgame
-signal startGame
+var is_game_playing = false
 
 func _ready():
 	chrono.connect("endgame", _on_endgame)
 	control.connect("startgame", _on_startgame)
+	icon_dog.refreshLabel()
+	icon_cat.refreshLabel()
 	
 func _process(delta):
 	var vector_player_1 = Vector2(val_scale_player_1,val_scale_player_1)
 	var vector_player_2 = Vector2(val_scale_player_2,val_scale_player_2)
-	if Input.is_action_just_pressed("spam_bubble") :		
-		spam_bubble.scale = vector_player_1
-		val_scale_player_1 += add_scale_player_1 
-	if Input.is_action_just_pressed("spam_bubble2"):
-		spam_bubble_2.scale = vector_player_2
-		val_scale_player_2 += add_scale_player_2
+	if is_game_playing: 
+		if Input.is_action_just_pressed("spam_bubble") :		
+			spam_bubble.scale = vector_player_1
+			val_scale_player_1 += add_scale_player_1 
+		if Input.is_action_just_pressed("spam_bubble2"):
+			spam_bubble_2.scale = vector_player_2
+			val_scale_player_2 += add_scale_player_2
 	
 func _on_endgame():
+	is_game_playing = false
 	compare_scale()
 	
 func _on_startgame():
 	audio_stream_player_2d_2.play()
 	chrono.visible = true
 	control.visible = false
-	print("tata")
+	is_game_playing = true
 
 func compare_scale():
 	if spam_bubble.get_scale() > spam_bubble_2.get_scale():
 		win_label.text = "PLAYER 1 WIN"
+		MiniGameManager.score_player_1 += 1
+		icon_dog.refreshLabel()
+
 	elif spam_bubble.get_scale() < spam_bubble_2.get_scale():
 		win_label.text = "PLAYER 2 WIN"
+		MiniGameManager.score_player_2 += 1
+		icon_cat.refreshLabel()
 	else: 
 		win_label.text = "DRAW"
 	win_label.visible = true

@@ -6,6 +6,9 @@ var mini_games = [
 	{"path": "res://scenes/mini jeux/spam bubble/spam_bubble_main.tscn", "played": false},
 ]
 
+var score_player_1 = 0
+var score_player_2 = 0
+
 func launch_random_minigame():
 	var unplayed_games = []
 	for mini_game in mini_games:

@@ -3,7 +3,6 @@ extends Control
 @onready var timer = $Timer
 @onready var audio_stream_player_2d = $"../AudioStreamPlayer2D"
 @onready var audio_stream_player_2d_2 = $"../AudioStreamPlayer2D2"
-@onready var HUD = $"../Controls"
 
 @export var blur : TextureRect
 
