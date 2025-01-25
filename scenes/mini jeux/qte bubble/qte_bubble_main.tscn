@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://xc0lboc3pjc5"]
+[gd_scene load_steps=20 format=3 uid="uid://xc0lboc3pjc5"]
 
 [ext_resource type="Texture2D" uid="uid://bwcc36tjt5f78" path="res://assets/sprites/free-winter-backgrounds-pixel-art/winter 6/hd.png" id="1_aephf"]
 [ext_resource type="Texture2D" uid="uid://c82hxbt06ogfx" path="res://assets/sprites/icon/bubble/barQteBubble.png" id="4_it5a8"]
@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://clcwb81jvrqhb" path="res://assets/sprites/icon/bubble/blueBubble.png" id="6_6ub7n"]
 [ext_resource type="Script" path="res://scripts/Mini jeux/qte bubble/skill_bar.gd" id="6_87ckw"]
 [ext_resource type="FontFile" uid="uid://bgu1kkmm26ttu" path="res://assets/fonts/monogram.ttf" id="7_q1gu4"]
+[ext_resource type="Script" path="res://scripts/UI/startChrono.gd" id="11_6x8rt"]
+[ext_resource type="Texture2D" uid="uid://ba61n1nesptc0" path="res://assets/sprites/icon/bubble/redStartWhiteBlack.png" id="12_to45u"]
+[ext_resource type="AudioStream" uid="uid://cborceypgfal8" path="res://assets/audio/notification-beep-229154.mp3" id="13_seaop"]
+[ext_resource type="AudioStream" uid="uid://dft27s35mwk6k" path="res://assets/audio/race-start-beeps-125125-[AudioTrimmer.com].mp3" id="14_q0vy5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncbqh"]
 atlas = ExtResource("6_6ub7n")
@@ -41,6 +45,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_27ppk"]
+
 [node name="QteBubbleMain" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -52,6 +58,7 @@ texture = ExtResource("1_aephf")
 script = ExtResource("5_7pgiu")
 
 [node name="Controls" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -180,11 +187,28 @@ sprite_frames = SubResource("SpriteFrames_4k2yc")
 position = Vector2(672, 302)
 sprite_frames = SubResource("SpriteFrames_4k2yc")
 
+[node name="Blur" type="TextureRect" parent="Player2Bubbles"]
+visible = false
+self_modulate = Color(0, 0, 0, 0.788235)
+offset_right = 1150.0
+offset_bottom = 651.0
+texture = SubResource("PlaceholderTexture2D_27ppk")
+
 [node name="IntroParticles" type="Node" parent="."]
 script = ExtResource("5_d7vyd")
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="IntroParticles"]
 position = Vector2(167, -112)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("6_6ub7n")
+emission_shape = 1
+emission_sphere_radius = 128.0
+
+[node name="CPUParticles2D7" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(59, -112)
 emitting = false
 amount = 10
 lifetime = 2.0
@@ -199,7 +223,17 @@ emitting = false
 amount = 10
 lifetime = 2.0
 one_shot = true
-texture = ExtResource("5_wlis2")
+texture = ExtResource("6_6ub7n")
+emission_shape = 1
+emission_sphere_radius = 128.0
+
+[node name="CPUParticles2D8" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(288, -109)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("6_6ub7n")
 emission_shape = 1
 emission_sphere_radius = 128.0
 
@@ -209,12 +243,32 @@ emitting = false
 amount = 10
 lifetime = 2.0
 one_shot = true
-texture = ExtResource("6_6ub7n")
+texture = ExtResource("5_wlis2")
+emission_shape = 1
+emission_sphere_radius = 128.0
+
+[node name="CPUParticles2D9" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(524, -105)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("5_wlis2")
 emission_shape = 1
 emission_sphere_radius = 128.0
 
 [node name="CPUParticles2D5" type="CPUParticles2D" parent="IntroParticles"]
 position = Vector2(847, -105)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("6_6ub7n")
+emission_shape = 1
+emission_sphere_radius = 128.0
+
+[node name="CPUParticles2D10" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(739, -105)
 emitting = false
 amount = 10
 lifetime = 2.0
@@ -232,3 +286,97 @@ one_shot = true
 texture = ExtResource("5_wlis2")
 emission_shape = 1
 emission_sphere_radius = 128.0
+
+[node name="CPUParticles2D11" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(965, -105)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("5_wlis2")
+emission_shape = 1
+emission_sphere_radius = 128.0
+
+[node name="StartGame" type="Control" parent="." node_paths=PackedStringArray("blur")]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("11_6x8rt")
+blur = NodePath("../Player2Bubbles/Blur")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StartGame"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_top = 92.0
+offset_right = 577.0
+offset_bottom = 259.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="StartGame/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("12_to45u")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="StartGame/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("12_to45u")
+expand_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="StartGame/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("12_to45u")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="StartGame/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("12_to45u")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="StartGame/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("12_to45u")
+expand_mode = 3
+
+[node name="Timer" type="Timer" parent="StartGame"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_seaop")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_q0vy5")
+
+[node name="WinLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 345.0
+offset_top = 26.0
+offset_right = 795.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_q1gu4")
+theme_override_font_sizes/font_size = 100
+text = "PLAYER 1 WIN"
+
+[node name="TimerNextLevel" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="finished" from="IntroParticles/CPUParticles2D2" to="== GAME MANAGER ==" method="_on_cpu_particles_2d_2_finished"]
+[connection signal="timeout" from="StartGame/Timer" to="StartGame" method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerNextLevel" to="== GAME MANAGER ==" method="_on_timer_next_level_timeout"]

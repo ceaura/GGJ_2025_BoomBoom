@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtke8vjvnfbwa"]
+[gd_scene load_steps=17 format=3 uid="uid://dtke8vjvnfbwa"]
 
 [ext_resource type="Texture2D" uid="uid://dn4bgkl4e6mh2" path="res://assets/sprites/free-winter-backgrounds-pixel-art/winter 5/11.png" id="1_r8w3y"]
 [ext_resource type="Script" path="res://scripts/Mini jeux/spam bubble/spam_bubble_game_manager.gd" id="3_dyrfd"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/UI/startChrono.gd" id="7_y0hnu"]
 [ext_resource type="AudioStream" uid="uid://cborceypgfal8" path="res://assets/audio/notification-beep-229154.mp3" id="9_ejbde"]
 [ext_resource type="AudioStream" uid="uid://dft27s35mwk6k" path="res://assets/audio/race-start-beeps-125125-[AudioTrimmer.com].mp3" id="10_f1a48"]
+[ext_resource type="FontFile" uid="uid://bgu1kkmm26ttu" path="res://assets/fonts/monogram.ttf" id="11_6qs40"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_feg32"]
 atlas = ExtResource("7_iy08p")
@@ -41,6 +42,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xop1w"]
+
 [node name="SpamBubbleMain" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -50,9 +53,6 @@ texture = ExtResource("1_r8w3y")
 
 [node name="==GAME MANAGER==" type="Node" parent="."]
 script = ExtResource("3_dyrfd")
-
-[node name="Chrono" parent="." instance=ExtResource("4_ssv7r")]
-amount_time = 30
 
 [node name="SpamBubble2" type="AnimatedSprite2D" parent="."]
 position = Vector2(754, 356)
@@ -75,8 +75,28 @@ texture = ExtResource("7_fgohd")
 emission_shape = 1
 emission_sphere_radius = 128.0
 
+[node name="CPUParticles2D7" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(59, -112)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("7_fgohd")
+emission_shape = 1
+emission_sphere_radius = 128.0
+
 [node name="CPUParticles2D3" type="CPUParticles2D" parent="IntroParticles"]
 position = Vector2(418, -109)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("7_fgohd")
+emission_shape = 1
+emission_sphere_radius = 128.0
+
+[node name="CPUParticles2D8" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(288, -109)
 emitting = false
 amount = 10
 lifetime = 2.0
@@ -95,8 +115,28 @@ texture = ExtResource("7_iy08p")
 emission_shape = 1
 emission_sphere_radius = 128.0
 
+[node name="CPUParticles2D9" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(524, -105)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("7_iy08p")
+emission_shape = 1
+emission_sphere_radius = 128.0
+
 [node name="CPUParticles2D5" type="CPUParticles2D" parent="IntroParticles"]
 position = Vector2(847, -105)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("7_fgohd")
+emission_shape = 1
+emission_sphere_radius = 128.0
+
+[node name="CPUParticles2D10" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(739, -105)
 emitting = false
 amount = 10
 lifetime = 2.0
@@ -115,14 +155,31 @@ texture = ExtResource("7_iy08p")
 emission_shape = 1
 emission_sphere_radius = 128.0
 
-[node name="Control" type="Control" parent="."]
+[node name="CPUParticles2D11" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(965, -105)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("7_iy08p")
+emission_shape = 1
+emission_sphere_radius = 128.0
+
+[node name="Chrono" parent="." instance=ExtResource("4_ssv7r")]
+visible = false
+amount_time = 15
+
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("blur")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("7_y0hnu")
+blur = NodePath("Blur")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -165,7 +222,13 @@ texture = ExtResource("7_rx6s3")
 expand_mode = 3
 
 [node name="Timer" type="Timer" parent="Control"]
-autostart = true
+
+[node name="Blur" type="TextureRect" parent="Control"]
+self_modulate = Color(0, 0, 0, 0.788235)
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 651.0
+texture = SubResource("PlaceholderTexture2D_xop1w")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_ejbde")
@@ -173,5 +236,26 @@ stream = ExtResource("9_ejbde")
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_f1a48")
 
+[node name="WinLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 345.0
+offset_top = 26.0
+offset_right = 795.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_6qs40")
+theme_override_font_sizes/font_size = 100
+text = "PLAYER 1 WIN"
+
+[node name="TimerNextLevel" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="finished" from="IntroParticles/CPUParticles2D2" to="==GAME MANAGER==" method="_on_cpu_particles_2d_2_finished"]
 [connection signal="timeout" from="Control/Timer" to="Control" method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerNextLevel" to="==GAME MANAGER==" method="_on_timer_next_level_timeout"]

@@ -3,7 +3,11 @@ extends Control
 @onready var timer = $Timer
 @onready var audio_stream_player_2d = $"../AudioStreamPlayer2D"
 @onready var audio_stream_player_2d_2 = $"../AudioStreamPlayer2D2"
+@onready var HUD = $"../Controls"
 
+@export var blur : TextureRect
+
+signal startgame
 var texture = preload("res://assets/sprites/icon/bubble/redStart.png")
 
 var current_index = 0
@@ -23,8 +27,10 @@ func play_audio():
 	if current_index < 6:
 		audio_stream_player_2d.play()
 	elif current_index == 6:
-		audio_stream_player_2d_2.play()
-
+		for child in $HBoxContainer.get_children():
+			child.visible = false
+		startgame.emit()
+		
 		
 
 	

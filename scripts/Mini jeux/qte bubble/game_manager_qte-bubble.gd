@@ -12,15 +12,25 @@ extends Node
 @onready var player_1_balloons = $"../Player1Bubbles"
 @onready var player_2_balloons = $"../Player2Bubbles"
 
+@onready var timer = $"../StartGame/Timer"
+@onready var control = $"../StartGame"
+@onready var blur = $"../Player2Bubbles/Blur"
+@onready var HUD = $"../Controls"
+@onready var audio_stream_player_2d_2 = $"../AudioStreamPlayer2D2"
+@onready var win_label = $"../WinLabel"
+@onready var timer_next_level = $"../TimerNextLevel"
+
 @export var cursor_speed = 400.0
 var cursor_direction = 1  
 var is_active = true 
 var is_player_1 = false
 
-signal endgame  
+signal startgame 
 
 func _ready():
 	randomize_target_zone()
+	control.connect("startgame", _on_startgame)
+
 
 func _process(delta):
 	var cursor_position = cursor.position
@@ -68,9 +78,28 @@ func randomize_target_zone():
 
 func _on_endgame():
 	if player_1_balloons.get_child_count() == 1 && player_2_balloons.get_child_count() == 1:
-		print("Egalité !")
-	elif player_2_balloons.get_child_count() == 1:
-		print("Player 2 gagne !")
+		win_label.text = "DRAW"
 	elif player_1_balloons.get_child_count() == 1:
-		print("Player 1 gagne !")
+		win_label.text = "Player 1 WIN"
+	elif player_2_balloons.get_child_count() == 1:
+		win_label.text = "Player 2 WIN"
+	HUD.visible = false
+	win_label.visible = true
+	timer_next_level.start(0)
+
+# Launch start chrono 
+func _on_startgame():
+	control.visible = false
+	blur.visible = false
+	HUD.visible = true
+	audio_stream_player_2d_2.play()
+	
+# Launch start chrono 
+func _on_cpu_particles_2d_2_finished():
+	control.visible = true
+	blur.visible = true
+	timer.start(0)
+
+
+func _on_timer_next_level_timeout():
 	MiniGameManager.launch_random_minigame()
