@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://xc0lboc3pjc5"]
 
 [ext_resource type="Texture2D" uid="uid://bwcc36tjt5f78" path="res://assets/sprites/free-winter-backgrounds-pixel-art/winter 6/hd.png" id="1_aephf"]
-[ext_resource type="Texture2D" uid="uid://c82hxbt06ogfx" path="res://assets/sprites/icon/bubble/barQteBubble.png" id="4_it5a8"]
+[ext_resource type="Texture2D" uid="uid://bhh6r2tbv4fam" path="res://assets/sprites/icon/bubble/barQteBubble.png" id="4_it5a8"]
 [ext_resource type="Texture2D" uid="uid://bgovrfj4sp5u7" path="res://assets/sprites/icon/bubble/WhiteBubble.png" id="4_mjjmy"]
 [ext_resource type="Script" path="res://scripts/Mini jeux/qte bubble/game_manager_qte-bubble.gd" id="5_7pgiu"]
 [ext_resource type="Script" path="res://scripts/UI/intro_particles.gd" id="5_d7vyd"]
@@ -58,7 +58,6 @@ texture = ExtResource("1_aephf")
 script = ExtResource("5_7pgiu")
 
 [node name="Controls" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
