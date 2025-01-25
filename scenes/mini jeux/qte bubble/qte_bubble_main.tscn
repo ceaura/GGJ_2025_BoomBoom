@@ -1,13 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://xc0lboc3pjc5"]
+[gd_scene load_steps=15 format=3 uid="uid://xc0lboc3pjc5"]
 
 [ext_resource type="Texture2D" uid="uid://bwcc36tjt5f78" path="res://assets/sprites/free-winter-backgrounds-pixel-art/winter 6/hd.png" id="1_aephf"]
+[ext_resource type="Texture2D" uid="uid://c82hxbt06ogfx" path="res://assets/sprites/icon/bubble/barQteBubble.png" id="4_it5a8"]
+[ext_resource type="Texture2D" uid="uid://bgovrfj4sp5u7" path="res://assets/sprites/icon/bubble/WhiteBubble.png" id="4_mjjmy"]
 [ext_resource type="Script" path="res://scripts/Mini jeux/qte bubble/game_manager_qte-bubble.gd" id="5_7pgiu"]
 [ext_resource type="Script" path="res://scripts/UI/intro_particles.gd" id="5_d7vyd"]
+[ext_resource type="Texture2D" uid="uid://1qh2kj0p5lpb" path="res://assets/sprites/icon/bubble/arrowQteBubble.png" id="5_tnh5u"]
 [ext_resource type="Texture2D" uid="uid://bvr2rx4cvenlx" path="res://assets/sprites/icon/bubble/redBubble.png" id="5_wlis2"]
 [ext_resource type="Texture2D" uid="uid://clcwb81jvrqhb" path="res://assets/sprites/icon/bubble/blueBubble.png" id="6_6ub7n"]
 [ext_resource type="Script" path="res://scripts/Mini jeux/qte bubble/skill_bar.gd" id="6_87ckw"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xdpft"]
+[ext_resource type="FontFile" uid="uid://bgu1kkmm26ttu" path="res://assets/fonts/monogram.ttf" id="7_q1gu4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncbqh"]
 atlas = ExtResource("6_6ub7n")
@@ -49,7 +51,7 @@ texture = ExtResource("1_aephf")
 [node name="== GAME MANAGER ==" type="Node" parent="."]
 script = ExtResource("5_7pgiu")
 
-[node name="Skill bar" type="Control" parent="."]
+[node name="Controls" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,7 +61,7 @@ offset_bottom = 650.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Skill bar"]
+[node name="Panel" type="Panel" parent="Controls"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,8 +70,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_87ckw")
 
-[node name="Barre" type="TextureRect" parent="Skill bar/Panel"]
-self_modulate = Color(0.716218, 0.104063, 0.387134, 1)
+[node name="Barre" type="TextureRect" parent="Controls/Panel"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -81,10 +82,10 @@ offset_right = -237.0
 offset_bottom = -186.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_xdpft")
+texture = ExtResource("4_it5a8")
+expand_mode = 2
 
-[node name="Zone cible" type="TextureRect" parent="Skill bar/Panel"]
-self_modulate = Color(0.89636, 0.613388, 0.965765, 1)
+[node name="Zone cible" type="TextureRect" parent="Controls/Panel"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -96,28 +97,44 @@ offset_right = -815.0
 offset_bottom = -186.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_xdpft")
+texture = ExtResource("4_mjjmy")
+expand_mode = 2
 
-[node name="Curseur" type="TextureRect" parent="Skill bar/Panel"]
-self_modulate = Color(0.216723, 0.39575, 0.700259, 1)
+[node name="Curseur" type="TextureRect" parent="Controls/Panel"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 551.0
+offset_left = 528.0
 offset_top = -239.0
-offset_right = -599.0
+offset_right = -576.0
 offset_bottom = -186.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_xdpft")
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_tnh5u")
+expand_mode = 3
 
-[node name="LeftMarkerBarre" type="Marker2D" parent="Skill bar/Panel"]
+[node name="LeftMarkerBarre" type="Marker2D" parent="Controls/Panel"]
 position = Vector2(273, 139)
 
-[node name="RightMarkerBarre" type="Marker2D" parent="Skill bar/Panel"]
+[node name="RightMarkerBarre" type="Marker2D" parent="Controls/Panel"]
 position = Vector2(920, 139)
+
+[node name="Label" type="Label" parent="Controls/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -190.5
+offset_top = 26.0
+offset_right = 236.5
+offset_bottom = 61.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("7_q1gu4")
+theme_override_font_sizes/font_size = 50
+text = "Explose tes 5 bulles pour GAGNER ! "
 
 [node name="Player1Bubbles" type="Node" parent="."]
 

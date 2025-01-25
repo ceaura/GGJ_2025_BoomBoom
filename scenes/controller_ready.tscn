@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://0gdthd31xpjy"]
+[gd_scene load_steps=6 format=3 uid="uid://0gdthd31xpjy"]
 
 [ext_resource type="Script" path="res://scripts/controller_ready/controller_ready.gd" id="1_1ey11"]
 [ext_resource type="Script" path="res://scripts/controller_ready/player.gd" id="1_cbyd3"]
 [ext_resource type="Texture2D" uid="uid://t8wsxknippsh" path="res://assets/sprites/icon/console-controller.svg" id="1_y0vw4"]
 [ext_resource type="PackedScene" uid="uid://dtke8vjvnfbwa" path="res://scenes/mini jeux/spam bubble/spam_bubble_main.tscn" id="2_0g3kw"]
+[ext_resource type="FontFile" uid="uid://bgu1kkmm26ttu" path="res://assets/fonts/monogram.ttf" id="5_r3b2k"]
 
 [node name="ControllerReady" type="Control"]
 layout_mode = 3
@@ -47,7 +48,8 @@ texture = ExtResource("1_y0vw4")
 self_modulate = Color(0.129412, 0.341176, 0.8, 1)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("5_r3b2k")
+theme_override_font_sizes/font_size = 90
 text = "PRESS A TO JOIN"
 
 [node name="Player2" type="PanelContainer" parent="HBoxContainer"]
@@ -74,5 +76,6 @@ texture = ExtResource("1_y0vw4")
 self_modulate = Color(0.8, 0.129412, 0.129412, 1)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("5_r3b2k")
+theme_override_font_sizes/font_size = 90
 text = "PRESS A TO JOIN"

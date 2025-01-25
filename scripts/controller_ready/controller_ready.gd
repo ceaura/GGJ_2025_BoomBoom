@@ -29,6 +29,5 @@ func all_controls_ready():
 	for device in devices:
 		if device.is_ready:
 			ready_count += 1
-	if ready_count >= 2:
-		print("All controls are ready!")
-		get_tree().change_scene_to_packed(selection_level_scene)
+	if ready_count >= 1:
+		MiniGameManager.launch_random_minigame()
