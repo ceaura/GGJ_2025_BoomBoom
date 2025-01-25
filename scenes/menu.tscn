@@ -1,0 +1,122 @@
+[gd_scene load_steps=13 format=3 uid="uid://mv4r3srd70gf"]
+
+[ext_resource type="Texture2D" uid="uid://ctibswiqq3gwc" path="res://assets/sprites/backgroundMenu-Sheet.png" id="1_qhy2w"]
+[ext_resource type="Script" path="res://scripts/UI/menu.gd" id="1_u3typ"]
+[ext_resource type="FontFile" uid="uid://cgj3e1um315pq" path="res://assets/fonts/Alaric CHarpentier Nuage.ttf" id="2_yd8dv"]
+[ext_resource type="Texture2D" uid="uid://cmloimvgoe5v0" path="res://assets/sprites/icon/btnPlay.png" id="4_nrvbo"]
+[ext_resource type="Texture2D" uid="uid://cm0cm858g7gjw" path="res://assets/sprites/icon/settingsBtn.png" id="5_mccm0"]
+[ext_resource type="Texture2D" uid="uid://br6c11iesyim5" path="res://assets/sprites/Bubble Drink 32x32/Bubble Bubble Gum.png" id="6_ose0l"]
+[ext_resource type="Texture2D" uid="uid://dihuhvxoqxt5e" path="res://assets/sprites/Bubble Drink 32x32/Bubble Red Velvet.png" id="7_ynmsb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31wyh"]
+atlas = ExtResource("1_qhy2w")
+region = Rect2(0, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja2ou"]
+atlas = ExtResource("1_qhy2w")
+region = Rect2(2000, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80vyr"]
+atlas = ExtResource("1_qhy2w")
+region = Rect2(4000, 0, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyvql"]
+atlas = ExtResource("1_qhy2w")
+region = Rect2(6000, 0, 2000, 2000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lanf4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31wyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ja2ou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80vyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyvql")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_u3typ")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(578, 322)
+scale = Vector2(0.578, 0.322)
+sprite_frames = SubResource("SpriteFrames_lanf4")
+animation = &"idle"
+frame_progress = 0.390121
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 206.0
+offset_top = 27.0
+offset_right = 872.0
+offset_bottom = 102.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_yd8dv")
+theme_override_font_sizes/font_size = 75
+text = "BUBBLE PARTY"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 802.0
+offset_top = 132.0
+offset_right = 1156.0
+offset_bottom = 557.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Play" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yd8dv")
+theme_override_font_sizes/font_size = 25
+text = "PLAY"
+icon = ExtResource("4_nrvbo")
+flat = true
+alignment = 0
+
+[node name="Options" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yd8dv")
+theme_override_font_sizes/font_size = 25
+text = "OPTIONS"
+icon = ExtResource("5_mccm0")
+flat = true
+alignment = 0
+
+[node name="Crédit" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yd8dv")
+theme_override_font_sizes/font_size = 25
+text = "CREDIT"
+icon = ExtResource("6_ose0l")
+flat = true
+alignment = 0
+
+[node name="Quit" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yd8dv")
+theme_override_font_sizes/font_size = 25
+text = "QUIT"
+icon = ExtResource("7_ynmsb")
+flat = true
+alignment = 0

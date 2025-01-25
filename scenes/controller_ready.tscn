@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/controller_ready/player.gd" id="1_cbyd3"]
 [ext_resource type="Texture2D" uid="uid://t8wsxknippsh" path="res://assets/sprites/icon/console-controller.svg" id="1_y0vw4"]
 [ext_resource type="PackedScene" uid="uid://dtke8vjvnfbwa" path="res://scenes/mini jeux/spam bubble/spam_bubble_main.tscn" id="2_0g3kw"]
-[ext_resource type="FontFile" uid="uid://bgu1kkmm26ttu" path="res://assets/fonts/monogram.ttf" id="5_r3b2k"]
+[ext_resource type="FontFile" uid="uid://cgj3e1um315pq" path="res://assets/fonts/Alaric CHarpentier Nuage.ttf" id="5_ctg0k"]
 [ext_resource type="AudioStream" uid="uid://emc8gge64v8f" path="res://assets/audio/Menu.mp3" id="6_dgvd8"]
 
 [node name="ControllerReady" type="Control"]
@@ -49,8 +49,8 @@ texture = ExtResource("1_y0vw4")
 self_modulate = Color(0.129412, 0.341176, 0.8, 1)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("5_r3b2k")
-theme_override_font_sizes/font_size = 90
+theme_override_fonts/font = ExtResource("5_ctg0k")
+theme_override_font_sizes/font_size = 50
 text = "PRESS A TO JOIN"
 
 [node name="Player2" type="PanelContainer" parent="HBoxContainer"]
@@ -77,8 +77,8 @@ texture = ExtResource("1_y0vw4")
 self_modulate = Color(0.8, 0.129412, 0.129412, 1)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("5_r3b2k")
-theme_override_font_sizes/font_size = 90
+theme_override_fonts/font = ExtResource("5_ctg0k")
+theme_override_font_sizes/font_size = 50
 text = "PRESS A TO JOIN"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://1qh2kj0p5lpb" path="res://assets/sprites/icon/bubble/arrowQteBubble.png" id="5_tnh5u"]
 [ext_resource type="Texture2D" uid="uid://bvr2rx4cvenlx" path="res://assets/sprites/icon/bubble/redBubble.png" id="5_wlis2"]
 [ext_resource type="Texture2D" uid="uid://clcwb81jvrqhb" path="res://assets/sprites/icon/bubble/blueBubble.png" id="6_6ub7n"]
-[ext_resource type="FontFile" uid="uid://bgu1kkmm26ttu" path="res://assets/fonts/monogram.ttf" id="7_q1gu4"]
 [ext_resource type="Script" path="res://scripts/UI/startChrono.gd" id="11_6x8rt"]
 [ext_resource type="Texture2D" uid="uid://ba61n1nesptc0" path="res://assets/sprites/icon/bubble/redStartWhiteBlack.png" id="12_to45u"]
 [ext_resource type="AudioStream" uid="uid://cborceypgfal8" path="res://assets/audio/notification-beep-229154.mp3" id="13_seaop"]
+[ext_resource type="FontFile" uid="uid://cgj3e1um315pq" path="res://assets/fonts/Alaric CHarpentier Nuage.ttf" id="14_niiya"]
 [ext_resource type="AudioStream" uid="uid://dft27s35mwk6k" path="res://assets/audio/race-start-beeps-125125-[AudioTrimmer.com].mp3" id="14_q0vy5"]
 [ext_resource type="PackedScene" uid="uid://7u1mxu0ut8o" path="res://scripts/UI/iconCat.tscn" id="15_7wb27"]
 [ext_resource type="PackedScene" uid="uid://t2yfadqnjhku" path="res://scripts/UI/icon.tscn" id="16_vb0xq"]
@@ -139,8 +139,8 @@ offset_top = 26.0
 offset_right = 236.5
 offset_bottom = 61.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("7_q1gu4")
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("14_niiya")
+theme_override_font_sizes/font_size = 25
 text = "Explose tes 5 bulles pour GAGNER ! "
 
 [node name="Player1Bubbles" type="Node" parent="."]
@@ -358,21 +358,21 @@ stream = ExtResource("13_seaop")
 stream = ExtResource("14_q0vy5")
 
 [node name="WinLabel" type="Label" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 345.0
+offset_left = 364.0
 offset_top = 26.0
-offset_right = 795.0
+offset_right = 814.0
 offset_bottom = 106.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("7_q1gu4")
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("14_niiya")
+theme_override_font_sizes/font_size = 50
 text = "PLAYER 1 WIN"
+horizontal_alignment = 1
 
 [node name="TimerNextLevel" type="Timer" parent="."]
 wait_time = 3.0
