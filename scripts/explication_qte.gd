@@ -31,5 +31,5 @@ func all_controls_ready():
 	for device in devices:
 		if device.is_ready:
 			ready_count += 1
-	if ready_count >= 1:
+	if ready_count >= 2:
 		get_tree().change_scene_to_packed(qte_bubble_scene)

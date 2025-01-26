@@ -1,0 +1,180 @@
+[gd_scene load_steps=16 format=3 uid="uid://s1igthkqpl3f"]
+
+[ext_resource type="Script" path="res://scripts/UI/intro_particles.gd" id="1_gag0m"]
+[ext_resource type="Script" path="res://scenes/mini jeux/game_manager_count_bubble.gd" id="1_yr10y"]
+[ext_resource type="Texture2D" uid="uid://clcwb81jvrqhb" path="res://assets/sprites/icon/bubble/blueBubble.png" id="2_gf5le"]
+[ext_resource type="Texture2D" uid="uid://bvr2rx4cvenlx" path="res://assets/sprites/icon/bubble/redBubble.png" id="3_xicvh"]
+[ext_resource type="Texture2D" uid="uid://bhf1gjdf443qc" path="res://assets/sprites/icon/backgroundCountBubble1.png" id="4_xvmw5"]
+[ext_resource type="FontFile" uid="uid://cgj3e1um315pq" path="res://assets/fonts/Alaric CHarpentier Nuage.ttf" id="5_3bofb"]
+[ext_resource type="Script" path="res://scripts/Mini jeux/button.gd" id="5_f6b7j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4fia"]
+atlas = ExtResource("4_xvmw5")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oliul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4fia")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncbqh"]
+atlas = ExtResource("2_gf5le")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8k5f7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncbqh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ycyl"]
+atlas = ExtResource("3_xicvh")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hbxvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ycyl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2miuw"]
+atlas = ExtResource("3_xicvh")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8rvpi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2miuw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ShootBubble" type="Node2D"]
+
+[node name="IntroParticles" type="Node" parent="."]
+script = ExtResource("1_gag0m")
+
+[node name="CPUParticles2D7" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(-95, 320)
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("2_gf5le")
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector2(980, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(579.5, 322.5)
+scale = Vector2(5.795, 3.225)
+sprite_frames = SubResource("SpriteFrames_oliul")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -3.0
+offset_right = 1159.0
+offset_bottom = 645.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 340.0
+offset_top = 142.0
+offset_right = -437.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_3bofb")
+theme_override_font_sizes/font_size = 50
+text = "How many bubble ? "
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_3bofb")
+theme_override_font_sizes/font_size = 50
+text = "10"
+flat = true
+script = ExtResource("5_f6b7j")
+
+[node name="Button2" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_3bofb")
+theme_override_font_sizes/font_size = 50
+text = "32"
+flat = true
+
+[node name="Button3" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_3bofb")
+theme_override_font_sizes/font_size = 50
+text = "45"
+flat = true
+
+[node name="Button4" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_3bofb")
+theme_override_font_sizes/font_size = 50
+text = "12"
+flat = true
+
+[node name="BubblePlayer1Group" type="Node" parent="."]
+
+[node name="QteBubble" type="AnimatedSprite2D" parent="BubblePlayer1Group"]
+position = Vector2(298, 160)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8k5f7")
+
+[node name="QteBubble2" type="AnimatedSprite2D" parent="BubblePlayer1Group"]
+position = Vector2(145, 157)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8k5f7")
+
+[node name="BubblePlayer2Group" type="Node" parent="."]
+
+[node name="QteBubble" type="AnimatedSprite2D" parent="BubblePlayer2Group"]
+position = Vector2(915, 163)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_hbxvp")
+
+[node name="QteBubble2" type="AnimatedSprite2D" parent="BubblePlayer2Group"]
+position = Vector2(762, 160)
+scale = Vector2(0.505155, 0.495536)
+sprite_frames = SubResource("SpriteFrames_8rvpi")
+
+[node name="== GAME MANAGER ==" type="Node" parent="."]
+script = ExtResource("1_yr10y")
+
+[connection signal="finished" from="IntroParticles/CPUParticles2D7" to="IntroParticles" method="_on_cpu_particles_2d_7_finished"]
+[connection signal="finished" from="IntroParticles/CPUParticles2D7" to="Control/HBoxContainer/Button" method="_on_cpu_particles_2d_7_finished"]
+[connection signal="pressed" from="Control/HBoxContainer/Button" to="IntroParticles" method="_on_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Button2" to="IntroParticles" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Button3" to="IntroParticles" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Button4" to="IntroParticles" method="_on_button_4_pressed"]

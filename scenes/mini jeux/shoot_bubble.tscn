@@ -1,31 +1,211 @@
-[gd_scene load_steps=4 format=3 uid="uid://s1igthkqpl3f"]
+[gd_scene load_steps=21 format=3 uid="uid://s1igthkqpl3f"]
 
-[ext_resource type="Script" path="res://scripts/Mini jeux/shoot_bubble/aim_shoot.gd" id="1_h4yhk"]
-[ext_resource type="Texture2D" uid="uid://bgovrfj4sp5u7" path="res://assets/sprites/icon/bubble/WhiteBubble.png" id="1_n01hr"]
+[ext_resource type="Script" path="res://scripts/UI/intro_particles.gd" id="1_gag0m"]
+[ext_resource type="Script" path="res://scenes/mini jeux/game_manager_count_bubble.gd" id="1_yr10y"]
+[ext_resource type="Texture2D" uid="uid://clcwb81jvrqhb" path="res://assets/sprites/icon/bubble/blueBubble.png" id="2_gf5le"]
+[ext_resource type="Texture2D" uid="uid://bgovrfj4sp5u7" path="res://assets/sprites/icon/bubble/WhiteBubble.png" id="2_iwl0k"]
+[ext_resource type="Texture2D" uid="uid://bvr2rx4cvenlx" path="res://assets/sprites/icon/bubble/redBubble.png" id="3_xicvh"]
+[ext_resource type="Texture2D" uid="uid://bhf1gjdf443qc" path="res://assets/sprites/icon/backgroundCountBubble1.png" id="4_xvmw5"]
+[ext_resource type="FontFile" uid="uid://cgj3e1um315pq" path="res://assets/fonts/Alaric CHarpentier Nuage.ttf" id="5_3bofb"]
+[ext_resource type="Script" path="res://scripts/Mini jeux/button.gd" id="5_f6b7j"]
+[ext_resource type="AudioStream" uid="uid://qtfnkn1j5mn3" path="res://assets/audio/Explosion bulle 2.mp3" id="8_8srf0"]
+[ext_resource type="AudioStream" uid="uid://cvioew7i3dp2q" path="res://assets/audio/3eme.wav" id="10_6seqx"]
+[ext_resource type="PackedScene" uid="uid://t2yfadqnjhku" path="res://scripts/UI/icon.tscn" id="11_jgrwl"]
+[ext_resource type="PackedScene" uid="uid://7u1mxu0ut8o" path="res://scripts/UI/iconCat.tscn" id="12_y3rsl"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0ktm4"]
-radius = 33.0606
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4fia"]
+atlas = ExtResource("4_xvmw5")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oliul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4fia")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncbqh"]
+atlas = ExtResource("2_gf5le")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8k5f7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncbqh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ycyl"]
+atlas = ExtResource("3_xicvh")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hbxvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ycyl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2miuw"]
+atlas = ExtResource("3_xicvh")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8rvpi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2miuw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="ShootBubble" type="Node2D"]
 
-[node name="Player1" type="CharacterBody2D" parent="."]
-position = Vector2(440, 296)
-script = ExtResource("1_h4yhk")
+[node name="IntroParticles" type="Node" parent="."]
+script = ExtResource("1_gag0m")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player1"]
-scale = Vector2(0.47, 0.47)
-texture = ExtResource("1_n01hr")
+[node name="CPUParticles2D7" type="CPUParticles2D" parent="IntroParticles"]
+position = Vector2(-152, 320)
+emitting = false
+amount = 20
+lifetime = 4.0
+one_shot = true
+texture = ExtResource("2_iwl0k")
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector2(980, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
-shape = SubResource("CircleShape2D_0ktm4")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(579.5, 322.5)
+scale = Vector2(5.795, 3.225)
+sprite_frames = SubResource("SpriteFrames_oliul")
 
-[node name="Player2" type="CharacterBody2D" parent="."]
-position = Vector2(586, 210)
-script = ExtResource("1_h4yhk")
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -3.0
+offset_right = 1159.0
+offset_bottom = 645.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Player2"]
-scale = Vector2(0.47, 0.47)
-texture = ExtResource("1_n01hr")
+[node name="HBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 340.0
+offset_top = 142.0
+offset_right = -437.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
-shape = SubResource("CircleShape2D_0ktm4")
+[node name="Label" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_3bofb")
+theme_override_font_sizes/font_size = 50
+text = "How many bubble ? "
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_3bofb")
+theme_override_font_sizes/font_size = 50
+text = "10"
+flat = true
+script = ExtResource("5_f6b7j")
+
+[node name="Button2" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_3bofb")
+theme_override_font_sizes/font_size = 50
+text = "32"
+flat = true
+
+[node name="Button3" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_3bofb")
+theme_override_font_sizes/font_size = 50
+text = "45"
+flat = true
+
+[node name="Button4" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_3bofb")
+theme_override_font_sizes/font_size = 50
+text = "12"
+flat = true
+
+[node name="BubblePlayer1Group" type="Node" parent="."]
+
+[node name="QteBubble" type="AnimatedSprite2D" parent="BubblePlayer1Group"]
+position = Vector2(298, 160)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8k5f7")
+
+[node name="QteBubble2" type="AnimatedSprite2D" parent="BubblePlayer1Group"]
+position = Vector2(145, 157)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8k5f7")
+
+[node name="BubblePlayer2Group" type="Node" parent="."]
+
+[node name="QteBubble" type="AnimatedSprite2D" parent="BubblePlayer2Group"]
+position = Vector2(915, 163)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_hbxvp")
+
+[node name="QteBubble2" type="AnimatedSprite2D" parent="BubblePlayer2Group"]
+position = Vector2(762, 160)
+scale = Vector2(0.505155, 0.495536)
+sprite_frames = SubResource("SpriteFrames_8rvpi")
+
+[node name="== GAME MANAGER ==" type="Node" parent="."]
+script = ExtResource("1_yr10y")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_8srf0")
+
+[node name="RefreshTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_6seqx")
+autoplay = true
+
+[node name="Icon" parent="." instance=ExtResource("11_jgrwl")]
+visible = false
+offset_left = 592.0
+offset_top = 282.0
+offset_right = 592.0
+offset_bottom = 282.0
+
+[node name="Icon2" parent="." instance=ExtResource("12_y3rsl")]
+visible = false
+offset_left = 1621.0
+offset_top = 282.0
+offset_right = 1621.0
+offset_bottom = 282.0
+
+[connection signal="finished" from="IntroParticles/CPUParticles2D7" to="Control/HBoxContainer/Button" method="_on_cpu_particles_2d_7_finished"]
+[connection signal="finished" from="IntroParticles/CPUParticles2D7" to="== GAME MANAGER ==" method="_on_cpu_particles_2d_7_finished"]
+[connection signal="pressed" from="Control/HBoxContainer/Button" to="== GAME MANAGER ==" method="_on_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Button2" to="== GAME MANAGER ==" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Button3" to="== GAME MANAGER ==" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Button4" to="== GAME MANAGER ==" method="_on_button_4_pressed"]
+[connection signal="timeout" from="RefreshTimer" to="== GAME MANAGER ==" method="_on_refresh_timer_timeout"]

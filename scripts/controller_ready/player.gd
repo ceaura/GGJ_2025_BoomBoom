@@ -8,11 +8,11 @@ var is_ready: bool:
 func _set_is_ready(value):
 	is_ready = value
 	if value:
-		$VBoxContainer/Label.text = "READY"
+		$VBoxContainer/Label.text = "PRÊT"
 	else:
 		if is_explaination:
-			$VBoxContainer/Label.text = "PRESS A TO SKIP"
+			$VBoxContainer/Label.text = "APPUIE A POUR SKIP"
 		else: 
-			$VBoxContainer/Label.text = "PRESS A TO JOIN"
+			$VBoxContainer/Label.text = "APPUIE SUR A POUR JOIN"
 			
 		

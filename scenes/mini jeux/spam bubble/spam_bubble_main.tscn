@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://dtke8vjvnfbwa"]
+[gd_scene load_steps=24 format=3 uid="uid://dtke8vjvnfbwa"]
 
-[ext_resource type="Texture2D" uid="uid://dn4bgkl4e6mh2" path="res://assets/sprites/free-winter-backgrounds-pixel-art/winter 5/11.png" id="1_r8w3y"]
+[ext_resource type="Texture2D" uid="uid://ctibswiqq3gwc" path="res://assets/sprites/backgroundMenu-Sheet.png" id="1_p1fll"]
 [ext_resource type="Script" path="res://scripts/Mini jeux/spam bubble/spam_bubble_game_manager.gd" id="3_dyrfd"]
+[ext_resource type="PackedScene" uid="uid://mv4r3srd70gf" path="res://scenes/menu.tscn" id="3_vpofo"]
 [ext_resource type="PackedScene" uid="uid://ca25550kxb748" path="res://scenes/UI/chrono.tscn" id="4_ssv7r"]
 [ext_resource type="Script" path="res://scripts/UI/intro_particles.gd" id="6_8ep7c"]
 [ext_resource type="Texture2D" uid="uid://clcwb81jvrqhb" path="res://assets/sprites/icon/bubble/blueBubble.png" id="7_fgohd"]
@@ -13,6 +14,23 @@
 [ext_resource type="FontFile" uid="uid://cgj3e1um315pq" path="res://assets/fonts/Alaric CHarpentier Nuage.ttf" id="11_dkhfu"]
 [ext_resource type="PackedScene" uid="uid://t2yfadqnjhku" path="res://scripts/UI/icon.tscn" id="12_dcxxk"]
 [ext_resource type="PackedScene" uid="uid://7u1mxu0ut8o" path="res://scripts/UI/iconCat.tscn" id="13_n7xmt"]
+[ext_resource type="AudioStream" uid="uid://mrkjcqeytxyh" path="res://assets/audio/Jeui rapide.wav" id="14_nrlbp"]
+[ext_resource type="Texture2D" uid="uid://cf8nr7sk0lbjk" path="res://assets/sprites/icon/exitBtn.png" id="15_nqbtn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maq1q"]
+atlas = ExtResource("1_p1fll")
+region = Rect2(2000, 0, 2000, 2000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fm0dp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maq1q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_feg32"]
 atlas = ExtResource("7_iy08p")
@@ -48,13 +66,14 @@ animations = [{
 
 [node name="SpamBubbleMain" type="Node2D"]
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(581.5, 330.37)
-scale = Vector2(2.00521, 2.02858)
-texture = ExtResource("1_r8w3y")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(581.5, 323.5)
+scale = Vector2(0.5775, 0.3255)
+sprite_frames = SubResource("SpriteFrames_fm0dp")
 
 [node name="==GAME MANAGER==" type="Node" parent="."]
 script = ExtResource("3_dyrfd")
+menu_scene = ExtResource("3_vpofo")
 
 [node name="SpamBubble2" type="AnimatedSprite2D" parent="."]
 position = Vector2(852, 356)
@@ -259,6 +278,7 @@ text = "PLAYER 1 WIN"
 wait_time = 3.0
 
 [node name="Icon" parent="." instance=ExtResource("12_dcxxk")]
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -270,11 +290,29 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="Icon2" parent="." instance=ExtResource("13_n7xmt")]
+visible = false
 offset_left = 1634.0
 offset_top = 283.0
 offset_right = 1634.0
 offset_bottom = 283.0
 
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_nrlbp")
+autoplay = true
+
+[node name="Button" type="Button" parent="."]
+offset_left = 876.0
+offset_top = 589.0
+offset_right = 1151.0
+offset_bottom = 647.0
+theme_override_fonts/font = ExtResource("11_dkhfu")
+theme_override_font_sizes/font_size = 25
+text = "BACK TO MENU"
+icon = ExtResource("15_nqbtn")
+flat = true
+alignment = 0
+
 [connection signal="finished" from="IntroParticles/CPUParticles2D2" to="==GAME MANAGER==" method="_on_cpu_particles_2d_2_finished"]
 [connection signal="timeout" from="Control/Timer" to="Control" method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerNextLevel" to="==GAME MANAGER==" method="_on_timer_next_level_timeout"]
+[connection signal="pressed" from="Button" to="==GAME MANAGER==" method="_on_button_pressed"]

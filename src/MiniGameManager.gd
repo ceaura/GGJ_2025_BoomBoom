@@ -4,6 +4,7 @@ extends Node
 var mini_games = [
 	{"path": "res://scenes/explication_spam.tscn", "played": false},
 	{"path": "res://scenes/explication_qte.tscn", "played": false},
+	{"path": "res://scenes/explication_shoot.tscn", "played": false},
 ]
 
 var final_score_scene_path = "res://scenes/finalScoreScreen.tscn"
@@ -22,7 +23,6 @@ func launch_random_minigame():
 			unplayed_games.append(mini_game)
 	
 	if unplayed_games.size() == 0:
-		print("Tous les mini-jeux ont été joués.")
 		all_mini_game_played()
 		return
 

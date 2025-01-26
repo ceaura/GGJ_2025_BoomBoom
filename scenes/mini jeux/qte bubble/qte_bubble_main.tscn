@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://xc0lboc3pjc5"]
+[gd_scene load_steps=27 format=3 uid="uid://xc0lboc3pjc5"]
 
-[ext_resource type="Texture2D" uid="uid://bwcc36tjt5f78" path="res://assets/sprites/free-winter-backgrounds-pixel-art/winter 6/hd.png" id="1_aephf"]
+[ext_resource type="Texture2D" uid="uid://ctibswiqq3gwc" path="res://assets/sprites/backgroundMenu-Sheet.png" id="1_s0t21"]
+[ext_resource type="PackedScene" uid="uid://mv4r3srd70gf" path="res://scenes/menu.tscn" id="3_co5e4"]
 [ext_resource type="Texture2D" uid="uid://bhh6r2tbv4fam" path="res://assets/sprites/icon/bubble/barQteBubble.png" id="4_it5a8"]
 [ext_resource type="Texture2D" uid="uid://bgovrfj4sp5u7" path="res://assets/sprites/icon/bubble/WhiteBubble.png" id="4_mjjmy"]
 [ext_resource type="Script" path="res://scripts/Mini jeux/qte bubble/game_manager_qte-bubble.gd" id="5_7pgiu"]
@@ -14,7 +15,25 @@
 [ext_resource type="AudioStream" uid="uid://fbodpenfivx8" path="res://assets/audio/DépartGo.wav" id="13_cngos"]
 [ext_resource type="FontFile" uid="uid://cgj3e1um315pq" path="res://assets/fonts/Alaric CHarpentier Nuage.ttf" id="14_niiya"]
 [ext_resource type="PackedScene" uid="uid://7u1mxu0ut8o" path="res://scripts/UI/iconCat.tscn" id="15_7wb27"]
+[ext_resource type="Texture2D" uid="uid://cf8nr7sk0lbjk" path="res://assets/sprites/icon/exitBtn.png" id="16_r1ggg"]
 [ext_resource type="PackedScene" uid="uid://t2yfadqnjhku" path="res://scripts/UI/icon.tscn" id="16_vb0xq"]
+[ext_resource type="AudioStream" uid="uid://wf403x1b2l14" path="res://assets/audio/Musique jeu 1 rapide.wav" id="19_l5ce6"]
+[ext_resource type="AudioStream" uid="uid://es5fqaw3brig" path="res://assets/audio/Explosion bulle 1.mp3" id="19_yjxl8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cft2y"]
+atlas = ExtResource("1_s0t21")
+region = Rect2(4000, 0, 2000, 2000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mma88"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cft2y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncbqh"]
 atlas = ExtResource("6_6ub7n")
@@ -50,13 +69,14 @@ animations = [{
 
 [node name="QteBubbleMain" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(592, 344)
-scale = Vector2(0.417014, 0.443827)
-texture = ExtResource("1_aephf")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(575, 323.5)
+scale = Vector2(0.575, 0.3235)
+sprite_frames = SubResource("SpriteFrames_mma88")
 
 [node name="== GAME MANAGER ==" type="Node" parent="."]
 script = ExtResource("5_7pgiu")
+menu_scene = ExtResource("3_co5e4")
 
 [node name="Controls" type="Control" parent="."]
 visible = false
@@ -379,12 +399,14 @@ horizontal_alignment = 1
 wait_time = 3.0
 
 [node name="Icon" parent="." instance=ExtResource("16_vb0xq")]
+visible = false
 offset_left = 592.0
 offset_top = 282.0
 offset_right = 592.0
 offset_bottom = 282.0
 
 [node name="Icon2" parent="." instance=ExtResource("15_7wb27")]
+visible = false
 offset_left = 1621.0
 offset_top = 282.0
 offset_right = 1621.0
@@ -396,8 +418,28 @@ one_shot = true
 [node name="TimerCooldownPlayer2" type="Timer" parent="."]
 one_shot = true
 
+[node name="Button" type="Button" parent="."]
+offset_left = 876.0
+offset_top = 589.0
+offset_right = 1151.0
+offset_bottom = 647.0
+theme_override_fonts/font = ExtResource("14_niiya")
+theme_override_font_sizes/font_size = 25
+text = "BACK TO MENU"
+icon = ExtResource("16_r1ggg")
+flat = true
+alignment = 0
+
+[node name="BubbleExplode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_yjxl8")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_l5ce6")
+autoplay = true
+
 [connection signal="finished" from="IntroParticles/CPUParticles2D2" to="== GAME MANAGER ==" method="_on_cpu_particles_2d_2_finished"]
 [connection signal="timeout" from="StartGame/Timer" to="StartGame" method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerNextLevel" to="== GAME MANAGER ==" method="_on_timer_next_level_timeout"]
 [connection signal="timeout" from="TimerCooldownPlayer1" to="== GAME MANAGER ==" method="_on_timer_cooldown_player_1_timeout"]
 [connection signal="timeout" from="TimerCooldownPlayer2" to="== GAME MANAGER ==" method="_on_timer_cooldown_player_2_timeout"]
+[connection signal="pressed" from="Button" to="== GAME MANAGER ==" method="_on_button_pressed"]

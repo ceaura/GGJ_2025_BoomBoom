@@ -25,7 +25,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Player1" type="PanelContainer" parent="HBoxContainer"]
-visible = false
 self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(576, 0)
 layout_mode = 2
@@ -49,11 +48,10 @@ self_modulate = Color(0.129412, 0.341176, 0.8, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_ctg0k")
-theme_override_font_sizes/font_size = 50
-text = "PRESS A TO JOIN"
+theme_override_font_sizes/font_size = 25
+text = "APPUIE SUR A POUR JOIN"
 
 [node name="Player2" type="PanelContainer" parent="HBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(576, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -76,8 +74,8 @@ self_modulate = Color(0.8, 0.129412, 0.129412, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_ctg0k")
-theme_override_font_sizes/font_size = 50
-text = "PRESS A TO JOIN"
+theme_override_font_sizes/font_size = 25
+text = "APPUIE SUR A POUR JOIN"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_dgvd8")

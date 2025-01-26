@@ -30,5 +30,5 @@ func all_controls_ready():
 	for device in devices:
 		if device.is_ready:
 			ready_count += 1
-	if ready_count >= 1:
+	if ready_count >= 2:
 		MiniGameManager.launch_random_minigame()

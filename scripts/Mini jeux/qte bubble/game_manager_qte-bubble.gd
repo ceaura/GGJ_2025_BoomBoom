@@ -17,12 +17,13 @@ extends Node
 @onready var timer_next_level = $"../TimerNextLevel"
 @onready var timer_cooldown_player_1 = $"../TimerCooldownPlayer1"
 @onready var timer_cooldown_player_2 = $"../TimerCooldownPlayer2"
+@onready var bubble_explode = $"../BubbleExplode"
 
 @onready var icon_cat = $"../Icon2"
 @onready var icon_dog = $"../Icon"
 
-
-@export var cursor_speed = 400.0
+@export var menu_scene : PackedScene
+@export var cursor_speed = 500.0
 var cursor_direction = 1  
 var is_game_playing = false 
 var is_player_1 = false
@@ -32,8 +33,7 @@ var player_2_can_shoot = true
 func _ready():
 	randomize_target_zone()
 	control.connect("startgame", _on_startgame)
-	icon_dog.refreshLabel()
-	icon_cat.refreshLabel()
+	
 
 
 func _process(delta):
@@ -59,7 +59,7 @@ func check_success(is_player_1):
 		if is_player_1:
 			explode_balloon(player_1_balloons)
 		else:
-			explode_balloon(player_2_balloons)
+			explode_balloon2(player_2_balloons)
 		randomize_target_zone()
 		cursor_speed += 50.0  
 	else:
@@ -73,9 +73,20 @@ func check_success(is_player_1):
 
 func explode_balloon(balloon_container):
 	if balloon_container.get_child_count() > 0:
+		print(balloon_container.get_child_count())
 		var balloon = balloon_container.get_child(0) 
 		balloon.queue_free()  
+		bubble_explode.play()
 	if balloon_container.get_child_count() == 1:
+		_on_endgame() 
+		
+func explode_balloon2(balloon_container):
+	if balloon_container.get_child_count() > 0:
+		print(balloon_container.get_child_count())
+		var balloon = balloon_container.get_child(0) 
+		balloon.queue_free()  
+		bubble_explode.play()
+	if balloon_container.get_child_count() == 2:
 		_on_endgame() 
 
 func randomize_target_zone():
@@ -109,6 +120,10 @@ func _on_startgame():
 	HUD.visible = true
 	is_game_playing = true
 	audio_stream_player_2d_2.play()
+	icon_cat.visible = true
+	icon_dog.visible = true
+	icon_dog.refreshLabel()
+	icon_cat.refreshLabel()
 	
 	
 # Launch start chrono 
@@ -128,3 +143,8 @@ func _on_timer_cooldown_player_1_timeout():
 
 func _on_timer_cooldown_player_2_timeout():
 	player_2_can_shoot = true
+
+
+func _on_button_pressed():
+	MiniGameManager.reset_minigames()
+	get_tree().change_scene_to_packed(menu_scene)
