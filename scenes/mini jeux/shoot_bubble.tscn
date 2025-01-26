@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://s1igthkqpl3f"]
+
+[ext_resource type="Script" path="res://scripts/Mini jeux/shoot_bubble/aim_shoot.gd" id="1_h4yhk"]
+[ext_resource type="Texture2D" uid="uid://bgovrfj4sp5u7" path="res://assets/sprites/icon/bubble/WhiteBubble.png" id="1_n01hr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ktm4"]
+radius = 33.0606
+
+[node name="ShootBubble" type="Node2D"]
+
+[node name="Player1" type="CharacterBody2D" parent="."]
+position = Vector2(440, 296)
+script = ExtResource("1_h4yhk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player1"]
+scale = Vector2(0.47, 0.47)
+texture = ExtResource("1_n01hr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+shape = SubResource("CircleShape2D_0ktm4")
+
+[node name="Player2" type="CharacterBody2D" parent="."]
+position = Vector2(586, 210)
+script = ExtResource("1_h4yhk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2"]
+scale = Vector2(0.47, 0.47)
+texture = ExtResource("1_n01hr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+shape = SubResource("CircleShape2D_0ktm4")

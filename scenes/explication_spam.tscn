@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsgm7e247kqn1"]
+
+[ext_resource type="Script" path="res://scripts/explication_spam.gd" id="1_43udl"]
+[ext_resource type="PackedScene" uid="uid://dtke8vjvnfbwa" path="res://scenes/mini jeux/spam bubble/spam_bubble_main.tscn" id="2_5x7yl"]
+[ext_resource type="Script" path="res://scripts/controller_ready/player.gd" id="3_aprcv"]
+[ext_resource type="Texture2D" uid="uid://bd1tpjdjtngr0" path="res://assets/sprites/xboxController.png" id="4_0hrcy"]
+[ext_resource type="FontFile" uid="uid://cgj3e1um315pq" path="res://assets/fonts/Alaric CHarpentier Nuage.ttf" id="5_23gym"]
+[ext_resource type="AudioStream" uid="uid://emc8gge64v8f" path="res://assets/audio/Menu.mp3" id="6_vtfin"]
+[ext_resource type="AudioStream" uid="uid://dgvmx5jepft44" path="res://assets/audio/Connexion.wav" id="7_x1vd0"]
+
+[node name="ControllerReady" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_43udl")
+spam_bubble_scene = ExtResource("2_5x7yl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 146.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player1" type="PanelContainer" parent="HBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(576, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+script = ExtResource("3_aprcv")
+is_explaination = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Player1"]
+layout_mode = 2
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Player1/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Player1/VBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("4_0hrcy")
+
+[node name="Label" type="Label" parent="HBoxContainer/Player1/VBoxContainer"]
+self_modulate = Color(0.129412, 0.341176, 0.8, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_23gym")
+theme_override_font_sizes/font_size = 50
+text = "PRESS A TO SKIP"
+
+[node name="Player2" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(576, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+script = ExtResource("3_aprcv")
+is_explaination = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Player2"]
+layout_mode = 2
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Player2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Player2/VBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("4_0hrcy")
+
+[node name="Label" type="Label" parent="HBoxContainer/Player2/VBoxContainer"]
+self_modulate = Color(0.8, 0.129412, 0.129412, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_23gym")
+theme_override_font_sizes/font_size = 50
+text = "PRESS A TO SKIP"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_vtfin")
+autoplay = true
+parameters/looping = true
+
+[node name="AudioStreamPlayerLogin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_x1vd0")
+
+[node name="MainLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -395.5
+offset_right = 395.5
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_23gym")
+theme_override_font_sizes/font_size = 50
+text = "Rule of BUBBLE SPAM"
+horizontal_alignment = 1
+
+[node name="ExplainationLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -575.0
+offset_top = 68.0
+offset_right = 578.0
+offset_bottom = 273.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_23gym")
+theme_override_font_sizes/font_size = 25
+text = "Appuyez autant de fois que possible sur A pendant 5 secondes pour gonfler votre bulle. A la fin, le joueur avec la plus grosse bulle gagne !"
+horizontal_alignment = 1
+autowrap_mode = 3

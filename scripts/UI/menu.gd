@@ -1,12 +1,14 @@
 extends Node2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@export var controller_selection : PackedScene
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	animated_sprite_2d.play("idle")
 
+func _on_play_pressed():
+	get_tree().change_scene_to_packed(controller_selection)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
+func _on_quit_button_down():
+	get_tree().quit()
