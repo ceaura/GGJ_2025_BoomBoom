@@ -24,10 +24,12 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -2.0
-offset_top = 152.0
+offset_top = 178.0
 offset_right = 2.0
+offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.96)
 
 [node name="Player1" type="PanelContainer" parent="HBoxContainer"]
 self_modulate = Color(0, 0, 0, 1)
@@ -119,6 +121,6 @@ offset_bottom = 147.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_heo3h")
 theme_override_font_sizes/font_size = 25
-text = "Des bulles vont passer à l'écran et vous devez deviner combien de bulles sont apparues. Le premier joueur à donner 2 bonnes réponses gagne  ! Soyez attentif et rapide, car chaque bonne réponse vous rapproche de la victoire. "
+text = "Des bulles vont passer à l'écran, et vous devez appuyer sur A à chaque fois que vous pensez voir une bulle. Votre total correspond au nombre de bulles que vous estimez avoir vu. Le premier joueur à donner 2 bonnes réponses gagne ! Soyez attentif et rapide, car chaque bonne réponse vous rapproche de la victoire."
 horizontal_alignment = 1
 autowrap_mode = 3

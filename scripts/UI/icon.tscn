@@ -31,6 +31,6 @@ texture = ExtResource("1_ogf83")
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_humy1")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 450
 text = "0"
 vertical_alignment = 2

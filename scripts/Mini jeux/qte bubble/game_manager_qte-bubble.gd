@@ -98,17 +98,16 @@ func randomize_target_zone():
 
 func _on_endgame():
 	is_game_playing = false
-	if player_1_balloons.get_child_count() == 1 && player_2_balloons.get_child_count() == 2:
-		win_label.text = "DRAW"
-	elif player_1_balloons.get_child_count() == 1:
-		win_label.text = "Player 1 WIN"
-		MiniGameManager.score_player_1 += 1
-		icon_dog.refreshLabel()
-
+	if player_1_balloons.get_child_count() == 0 && player_2_balloons.get_child_count() == 2:
+		win_label.text = "EGALITE"
 	elif player_2_balloons.get_child_count() == 2:
-		win_label.text = "Player 2 WIN"
+		win_label.text = "VICTOIRE DU CHAT"
 		MiniGameManager.score_player_2 += 1
 		icon_cat.refreshLabel()
+	elif player_1_balloons.get_child_count() == 1:
+		win_label.text = "VICTOIRE DU CHIEN"
+		MiniGameManager.score_player_1 += 1
+		icon_dog.refreshLabel()
 	HUD.visible = false
 	win_label.visible = true
 	timer_next_level.start(0)

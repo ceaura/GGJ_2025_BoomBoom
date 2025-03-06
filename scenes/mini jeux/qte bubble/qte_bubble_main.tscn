@@ -400,17 +400,17 @@ wait_time = 3.0
 
 [node name="Icon" parent="." instance=ExtResource("16_vb0xq")]
 visible = false
-offset_left = 592.0
-offset_top = 282.0
-offset_right = 592.0
-offset_bottom = 282.0
+offset_left = 656.0
+offset_top = 297.0
+offset_right = 656.0
+offset_bottom = 297.0
 
 [node name="Icon2" parent="." instance=ExtResource("15_7wb27")]
 visible = false
-offset_left = 1621.0
-offset_top = 282.0
-offset_right = 1621.0
-offset_bottom = 282.0
+offset_left = 1654.0
+offset_top = 297.0
+offset_right = 1654.0
+offset_bottom = 297.0
 
 [node name="TimerCooldownPlayer1" type="Timer" parent="."]
 one_shot = true

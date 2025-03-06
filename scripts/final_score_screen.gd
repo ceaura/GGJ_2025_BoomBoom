@@ -10,7 +10,7 @@ func _ready():
 	elif MiniGameManager.score_player_1 < MiniGameManager.score_player_2 : 
 		label.text = "VICTOIRE DU CHAT"
 	else : 
-		label.text = "ÉGALITÉ"
+		label.text = "EGALITE"
 
 func _on_button_pressed():
 	MiniGameManager.reset_minigames()

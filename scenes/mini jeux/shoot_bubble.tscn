@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://s1igthkqpl3f"]
+[gd_scene load_steps=20 format=3 uid="uid://s1igthkqpl3f"]
 
 [ext_resource type="Script" path="res://scripts/UI/intro_particles.gd" id="1_gag0m"]
 [ext_resource type="Script" path="res://scenes/mini jeux/game_manager_count_bubble.gd" id="1_yr10y"]
@@ -7,26 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bvr2rx4cvenlx" path="res://assets/sprites/icon/bubble/redBubble.png" id="3_xicvh"]
 [ext_resource type="Texture2D" uid="uid://bhf1gjdf443qc" path="res://assets/sprites/icon/backgroundCountBubble1.png" id="4_xvmw5"]
 [ext_resource type="FontFile" uid="uid://cgj3e1um315pq" path="res://assets/fonts/Alaric CHarpentier Nuage.ttf" id="5_3bofb"]
-[ext_resource type="Script" path="res://scripts/Mini jeux/button.gd" id="5_f6b7j"]
 [ext_resource type="AudioStream" uid="uid://qtfnkn1j5mn3" path="res://assets/audio/Explosion bulle 2.mp3" id="8_8srf0"]
 [ext_resource type="AudioStream" uid="uid://cvioew7i3dp2q" path="res://assets/audio/3eme.wav" id="10_6seqx"]
 [ext_resource type="PackedScene" uid="uid://t2yfadqnjhku" path="res://scripts/UI/icon.tscn" id="11_jgrwl"]
 [ext_resource type="PackedScene" uid="uid://7u1mxu0ut8o" path="res://scripts/UI/iconCat.tscn" id="12_y3rsl"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i4fia"]
-atlas = ExtResource("4_xvmw5")
-region = Rect2(0, 0, 200, 200)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_oliul"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i4fia")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncbqh"]
 atlas = ExtResource("2_gf5le")
@@ -73,7 +57,46 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4fia"]
+atlas = ExtResource("4_xvmw5")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oliul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4fia")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="ShootBubble" type="Node2D"]
+
+[node name="BubblePlayer1Group" type="Node" parent="."]
+
+[node name="QteBubble" type="AnimatedSprite2D" parent="BubblePlayer1Group"]
+position = Vector2(298, 160)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8k5f7")
+
+[node name="QteBubble2" type="AnimatedSprite2D" parent="BubblePlayer1Group"]
+position = Vector2(145, 157)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8k5f7")
+
+[node name="BubblePlayer2Group" type="Node" parent="."]
+
+[node name="QteBubble" type="AnimatedSprite2D" parent="BubblePlayer2Group"]
+position = Vector2(915, 163)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_hbxvp")
+
+[node name="QteBubble2" type="AnimatedSprite2D" parent="BubblePlayer2Group"]
+position = Vector2(762, 160)
+scale = Vector2(0.505155, 0.495536)
+sprite_frames = SubResource("SpriteFrames_8rvpi")
 
 [node name="IntroParticles" type="Node" parent="."]
 script = ExtResource("1_gag0m")
@@ -106,10 +129,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 340.0
-offset_top = 142.0
-offset_right = -437.0
-offset_bottom = 3.0
+offset_left = 365.0
+offset_right = -412.0
+offset_bottom = -139.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -118,64 +140,13 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_3bofb")
 theme_override_font_sizes/font_size = 50
-text = "How many bubble ? "
+text = "Comptez les bulles ! "
 horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="Control/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_3bofb")
-theme_override_font_sizes/font_size = 50
-text = "10"
-flat = true
-script = ExtResource("5_f6b7j")
-
-[node name="Button2" type="Button" parent="Control/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_3bofb")
-theme_override_font_sizes/font_size = 50
-text = "32"
-flat = true
-
-[node name="Button3" type="Button" parent="Control/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_3bofb")
-theme_override_font_sizes/font_size = 50
-text = "45"
-flat = true
-
-[node name="Button4" type="Button" parent="Control/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_3bofb")
-theme_override_font_sizes/font_size = 50
-text = "12"
-flat = true
-
-[node name="BubblePlayer1Group" type="Node" parent="."]
-
-[node name="QteBubble" type="AnimatedSprite2D" parent="BubblePlayer1Group"]
-position = Vector2(298, 160)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_8k5f7")
-
-[node name="QteBubble2" type="AnimatedSprite2D" parent="BubblePlayer1Group"]
-position = Vector2(145, 157)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_8k5f7")
-
-[node name="BubblePlayer2Group" type="Node" parent="."]
-
-[node name="QteBubble" type="AnimatedSprite2D" parent="BubblePlayer2Group"]
-position = Vector2(915, 163)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_hbxvp")
-
-[node name="QteBubble2" type="AnimatedSprite2D" parent="BubblePlayer2Group"]
-position = Vector2(762, 160)
-scale = Vector2(0.505155, 0.495536)
-sprite_frames = SubResource("SpriteFrames_8rvpi")
 
 [node name="== GAME MANAGER ==" type="Node" parent="."]
 script = ExtResource("1_yr10y")
+min_bubbles = 14
+max_bubbles = 20
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_8srf0")
@@ -190,22 +161,32 @@ autoplay = true
 
 [node name="Icon" parent="." instance=ExtResource("11_jgrwl")]
 visible = false
-offset_left = 592.0
-offset_top = 282.0
-offset_right = 592.0
-offset_bottom = 282.0
+offset_left = 646.0
+offset_top = 297.0
+offset_right = 646.0
+offset_bottom = 297.0
 
 [node name="Icon2" parent="." instance=ExtResource("12_y3rsl")]
 visible = false
-offset_left = 1621.0
-offset_top = 282.0
-offset_right = 1621.0
-offset_bottom = 282.0
+offset_left = 1661.0
+offset_top = 297.0
+offset_right = 1661.0
+offset_bottom = 297.0
 
-[connection signal="finished" from="IntroParticles/CPUParticles2D7" to="Control/HBoxContainer/Button" method="_on_cpu_particles_2d_7_finished"]
+[node name="TimerNExtLevel" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 258.0
+offset_top = 286.0
+offset_right = 846.0
+offset_bottom = 336.0
+theme_override_fonts/font = ExtResource("5_3bofb")
+theme_override_font_sizes/font_size = 50
+text = "VICTOIRE DU CHIEN"
+horizontal_alignment = 1
+
 [connection signal="finished" from="IntroParticles/CPUParticles2D7" to="== GAME MANAGER ==" method="_on_cpu_particles_2d_7_finished"]
-[connection signal="pressed" from="Control/HBoxContainer/Button" to="== GAME MANAGER ==" method="_on_button_pressed"]
-[connection signal="pressed" from="Control/HBoxContainer/Button2" to="== GAME MANAGER ==" method="_on_button_2_pressed"]
-[connection signal="pressed" from="Control/HBoxContainer/Button3" to="== GAME MANAGER ==" method="_on_button_3_pressed"]
-[connection signal="pressed" from="Control/HBoxContainer/Button4" to="== GAME MANAGER ==" method="_on_button_4_pressed"]
 [connection signal="timeout" from="RefreshTimer" to="== GAME MANAGER ==" method="_on_refresh_timer_timeout"]
+[connection signal="timeout" from="TimerNExtLevel" to="== GAME MANAGER ==" method="_on_timer_n_ext_level_timeout"]

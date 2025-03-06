@@ -53,16 +53,16 @@ func _on_startgame():
 
 func compare_scale():
 	if spam_bubble.get_scale() > spam_bubble_2.get_scale():
-		win_label.text = "PLAYER 1 WIN"
+		win_label.text = "VICTOIRE DU CHIEN"
 		MiniGameManager.score_player_1 += 1
 		icon_dog.refreshLabel()
 
 	elif spam_bubble.get_scale() < spam_bubble_2.get_scale():
-		win_label.text = "PLAYER 2 WIN"
+		win_label.text = "VICTOIRE DU CHAT"
 		MiniGameManager.score_player_2 += 1
 		icon_cat.refreshLabel()
 	else: 
-		win_label.text = "DRAW"
+		win_label.text = "EGALITE"
 	win_label.visible = true
 	chrono.visible = false
 	timer_next_level.start(0)
